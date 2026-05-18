@@ -247,8 +247,8 @@ private fun OnboardingScreen(onDone: () -> Unit) {
             }
             item {
                 StepCard(
-                    title = "3. 开启外部调用",
-                    body = "在 Termux 里执行后重启 Termux：",
+                    title = "3. 开启外部调用和系统权限",
+                    body = "在 Termux 里执行后重启 Termux。然后到 Android 设置 > 应用 > Cloudflared Launcher > 权限 > 其他权限，允许 Run commands in Termux environment。",
                     code = "mkdir -p ~/.termux\necho \"allow-external-apps = true\" >> ~/.termux/termux.properties"
                 )
             }

@@ -24,6 +24,12 @@ echo "allow-external-apps = true" >> ~/.termux/termux.properties
 
 Restart Termux after changing `termux.properties`.
 
+Also grant the Android permission for this app:
+
+```text
+Android Settings > Apps > Cloudflared Launcher > Permissions > Additional permissions > Run commands in Termux environment
+```
+
 In Cloudflare Zero Trust, create the Tunnel and configure the Public Hostname service URL, for example:
 
 ```text

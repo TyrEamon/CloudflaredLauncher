@@ -3,6 +3,7 @@ package com.cloudflared.launcher.termux
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.SystemClock
 import com.cloudflared.launcher.model.TunnelProfile
@@ -59,6 +60,13 @@ class TermuxCommandRunner(private val context: Context) {
         workdir: String,
         description: String
     ): DispatchResult {
+        if (context.checkSelfPermission(TermuxConstants.PERMISSION_RUN_COMMAND) != PackageManager.PERMISSION_GRANTED) {
+            return DispatchResult(
+                success = false,
+                message = "缺少 Termux RUN_COMMAND 权限。请到 Android 设置 > 应用 > Cloudflared Launcher > 权限 > 其他权限或 Additional permissions > 允许 Run commands in Termux environment。"
+            )
+        }
+
         val requestCode = profile.id.hashCode() xor action.ordinal xor SystemClock.uptimeMillis().toInt()
         val resultIntent = Intent(context, TermuxResultService::class.java)
             .putExtra(TermuxResultService.EXTRA_PROFILE_ID, profile.id)

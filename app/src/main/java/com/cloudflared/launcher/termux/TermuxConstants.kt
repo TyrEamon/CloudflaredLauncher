@@ -2,6 +2,7 @@ package com.cloudflared.launcher.termux
 
 object TermuxConstants {
     const val PACKAGE_NAME = "com.termux"
+    const val PERMISSION_RUN_COMMAND = "com.termux.permission.RUN_COMMAND"
     const val RUN_COMMAND_SERVICE_NAME = "com.termux.app.RunCommandService"
     const val ACTION_RUN_COMMAND = "com.termux.RUN_COMMAND"
 
